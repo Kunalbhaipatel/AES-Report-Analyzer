@@ -14,8 +14,8 @@ def extract_volume_format(file):
     text = "".join([page.get_text() for page in doc])
 
     data = {}
-    data['Well Name'] = safe_search(r"Well Name.*?\n\s*(.*?)\n", text)
-    data['Rig Name'] = safe_search(r"Rig Name.*?\n\s*(.*?)\n", text)
+    data['Well Name'] = safe_search(r"Well Name.*?:?\s*(.*?)\n", text)
+    data['Rig Name'] = safe_search(r"Rig Name.*?:?\s*(.*?)\n", text)
     data['Bit Size'] = safe_search(r"Bit Data.*?Size\s*\n\s*(.*?)\s", text)
     data['Depth'] = safe_search(r"Drilled Depth\s*\n\s*([\d,]+)", text).replace(',', '')
     data['Drilling Hrs'] = safe_search(r"Hours\s*\n\s*([\d.]+)", text)
