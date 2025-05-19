@@ -14,7 +14,7 @@ def extract_final_pdf_format(file):
     text = "".join([page.get_text() for page in doc])
 
     data = {}
-    data['Well Name'] = safe_search(r"Well Name and No\.\s*(.*?)\n"
+    data['Well Name'] = safe_search(r"Well Name and No\.\s*(.*?)
 ", text)
     data['Rig Name'] = safe_search(r"Rig Name and No\.\s*(.*?)
 ", text)
