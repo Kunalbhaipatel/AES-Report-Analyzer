@@ -14,14 +14,14 @@ def extract_final_pdf_format(file):
     text = "".join([page.get_text() for page in doc])
 
     data = {}
-    data['Well Name'] = safe_search(r"Well Name and No\.\s*(.*?)
+data['Well Name'] = safe_search(r"Well Name and No\.\s*(.*?)\n", text)
 ", text)
-    data['Rig Name'] = safe_search(r"Rig Name and No\.\s*(.*?)
+data['Rig Name'] = safe_search(r"Rig Name and No\.\s*(.*?)\n", text)
 ", text)
-    data['Contractor'] = safe_search(r"(HELMERICH & PAYNE.*?)
+data['Contractor'] = safe_search(r"(HELMERICH & PAYNE.*?)\n", text)
 ", text)
     data['Depth'] = safe_search(r"Drilled Depth\s+([\d,]+)", text).replace(',', '')
-    data['Bit Size'] = safe_search(r"Bit Data.*?Size.*?
+data['Bit Size'] = safe_search(r"Bit Data.*?Size.*?\n.*?(\d+\.\d+)", text)
 .*?(\d+\.\d+)", text)
     data['Drilling Hrs'] = safe_search(r"Hours\s+([\d.]+)", text)
 
